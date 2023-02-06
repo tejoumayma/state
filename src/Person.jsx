@@ -6,8 +6,14 @@ export class Person extends Component {
     bio: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     imgSrc: pro,
     profession: "Student",
-    // shows: true,
+    timer: 0,
   };
+  componentDidMount = () => {
+    this.intervalId = setInterval(() => {
+      this.setState({ timer: this.state.timer + 1 });
+    }, 1000);
+  };
+
   render() {
     return (
       <div style={{ padding: "15px" }}>
@@ -40,6 +46,9 @@ export class Person extends Component {
         <p style={{ textAlign: "start", fontSize: "large" }}>
           {this.state.profession}
         </p>
+        <div>
+          <h2>{this.state.timer}</h2>
+        </div>
       </div>
     );
   }
